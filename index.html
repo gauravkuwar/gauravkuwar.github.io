@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Gaurav Kuwar</title>
+  <meta name="description" content="Gaurav Kuwar. Cryptographic hardware research and software engineering.">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+  <style>
+  /* Dark by default; the toggle stamps data-theme="light" on <html>. */
+  :root {
+    color-scheme: dark;
+    --bg: #14181c;
+    --ink: #e6e9ec;
+    --muted: #98a2ab;
+    --rule: #2b3238;
+    --accent: #6cc3d0;
+    --accent-soft: #1b2b30;
+    --serif: "Source Serif 4", Georgia, "Times New Roman", serif;
+    --mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  }
+  :root[data-theme="light"] {
+    color-scheme: light;
+    --bg: #ffffff;
+    --ink: #1c2126;
+    --muted: #5d6670;
+    --rule: #dde2e6;
+    --accent: #0b5c6b;
+    --accent-soft: #e6f0f2;
+  }
+
+  .theme-toggle {
+    position: fixed; top: 16px; right: 16px;
+    font-family: var(--mono); font-size: 12px; letter-spacing: 0.08em;
+    background: var(--bg); color: var(--muted);
+    border: 1px solid var(--rule); border-radius: 3px; padding: 4px 9px; cursor: pointer;
+  }
+  .theme-toggle:hover, .theme-toggle:focus-visible { color: var(--accent); border-color: var(--accent); outline: none; }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--serif);
+    font-size: 17px;
+    line-height: 1.55;
+    padding-inline: 20px;
+    padding-block: 56px 80px;
+  }
+  main { max-width: 640px; margin: 0 auto; display: grid; gap: 44px; }
+
+  a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; }
+  a:hover, a:focus-visible { border-bottom-color: var(--accent); outline: none; }
+
+  header { display: grid; gap: 12px; }
+  h1 { font-size: 34px; font-weight: 600; letter-spacing: -0.01em; margin: 0; line-height: 1.1; text-wrap: balance; }
+  .role { color: var(--muted); margin: 0; }
+  .links { display: flex; flex-wrap: wrap; gap: 6px 18px; font-family: var(--mono); font-size: 13px; }
+
+  section { display: grid; gap: 14px; }
+  h2 {
+    font-family: var(--mono); font-weight: 500; font-size: 12px; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--muted); margin: 0;
+    padding-bottom: 8px; border-bottom: 1px solid var(--rule);
+  }
+  p { margin: 0; }
+
+  .list { list-style: none; margin: 0; padding: 0; display: grid; gap: 22px; }
+  .item { display: grid; gap: 4px; }
+  .item .title { font-weight: 600; }
+  .item .meta { color: var(--muted); font-size: 15px; }
+  .item .actions { display: flex; gap: 14px; font-family: var(--mono); font-size: 13px; }
+  .tag {
+    display: inline-block; font-family: var(--mono); font-size: 12px; padding: 1px 7px;
+    border-radius: 3px; background: var(--accent-soft); color: var(--accent); margin-right: 6px;
+  }
+
+  .exp { display: grid; grid-template-columns: 9em 1fr; gap: 8px 16px; }
+  .exp .when { font-family: var(--mono); font-size: 13px; color: var(--muted); padding-top: 3px; font-variant-numeric: tabular-nums; }
+  @media (max-width: 480px) { .exp { grid-template-columns: 1fr; gap: 4px 16px; } .exp .item { margin-bottom: 10px; } }
+
+  footer { font-family: var(--mono); font-size: 12px; color: var(--muted); }
+  </style>
+</head>
+<body>
+<button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch to light mode">light</button>
+<script>
+  (function () {
+    var root = document.documentElement;
+    var btn = document.getElementById('theme-toggle');
+    function apply(theme) {
+      if (theme === 'light') root.setAttribute('data-theme', 'light');
+      else root.removeAttribute('data-theme');
+      var next = theme === 'light' ? 'dark' : 'light';
+      btn.textContent = next;
+      btn.setAttribute('aria-label', 'Switch to ' + next + ' mode');
+    }
+    var saved = null;
+    try { saved = localStorage.getItem('theme'); } catch (e) {}
+    apply(saved === 'light' ? 'light' : 'dark');
+    btn.addEventListener('click', function () {
+      var theme = root.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+      apply(theme);
+      try { localStorage.setItem('theme', theme); } catch (e) {}
+    });
+  })();
+</script>
+
+<main>
+  <header>
+    <h1>Gaurav Kuwar</h1>
+    <p class="role">Cryptographic Hardware Research &amp; Software Engineer</p>
+    <nav class="links">
+      <a href="mailto:gauravskuwar@gmail.com" target="_top">email</a>
+      <a href="https://github.com/gauravkuwar">github</a>
+      <a href="https://linkedin.com/in/gauravkuwar">linkedin</a>
+      <a href="https://scholar.google.com/">scholar</a>
+      <a href="#">resume</a>
+    </nav>
+  </header>
+
+  <section>
+    <h2>About</h2>
+    <p>I research cryptographic hardware accelerators for zero-knowledge proofs, elliptic-curve and modular arithmetic, on both the architecture and the EDA side. I also work full time as a software engineer at Capital One.</p>
+  </section>
+
+  <section>
+    <h2>Publications</h2>
+    <ul class="list">
+      <li class="item">
+        <span class="title">Locus: A Framework for Exploring and Optimizing Point Addition Hardware for Zero-Knowledge Proofs</span>
+        <span class="meta"><span class="tag">ICCAD 2026</span>Gaurav Kuwar, Alhad Daftardar, Jianqiao Mo, Siddharth Garg, Brandon Reagen. IEEE/ACM International Conference on Computer-Aided Design, San Jose, CA. November 2026.</span>
+        <span class="actions">
+          <a href="https://doi.org/10.1145/3831252.3834141">paper</a>
+          <a href="https://github.com/cryptolets/cryptolets/tree/locus">code</a>
+        </span>
+      </li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Talks</h2>
+    <ul class="list">
+      <li class="item">
+        <span class="title">Cryptolets: An Open-Source Hardware Framework for Cryptographic Kernels</span>
+        <span class="meta"><span class="tag">MERIF 2026</span>Gaurav Kuwar, Brandon Reagen. Midscale Experimental Research Infrastructure Forum, Demo and Poster Night, Washington, DC. September 2026.</span>
+        <span class="actions">
+          <a href="https://merif.renci.org/merif26-demo-and-poster-night">demo</a>
+          <a href="https://github.com/cryptolets/cryptolets">code</a>
+        </span>
+      </li>
+      <li class="item">
+        <span class="title">Tessera: An Open-Source Hardware Framework for Cryptographic Kernels</span>
+        <span class="meta"><span class="tag">OSCAR @ ISCA 2026</span>Gaurav Kuwar, Alhad Daftardar, Jianqiao Mo, Brandon Reagen. Workshop on Open-Source Computer Architecture Research, Raleigh, NC. June 2026.</span>
+        <span class="actions">
+          <a href="https://oscar-workshop.github.io/Program_2026.html">talk</a>
+          <a href="https://github.com/cryptolets/cryptolets">code</a>
+        </span>
+      </li>
+      <li class="item">
+        <span class="title">Tessera Demo</span>
+        <span class="meta"><span class="tag">Cryptolets Tutorial @ ISCA 2026</span>Cryptolets: Building a Community and Open-Source Hardware Repository for Cryptographic Computing. Raleigh, NC. June 2026.</span>
+        <span class="actions">
+          <a href="https://cryptolets.org/blog/2026/cryptolets-tutorial-isca2026/">demo</a>
+          <a href="https://github.com/cryptolets/cryptolets">code</a>
+        </span>
+      </li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Experience</h2>
+    <div class="exp">
+      <span class="when">May 2025 – now</span>
+      <div class="item"><span class="title">Graduate Research Assistant, NYU</span></div>
+      <span class="when">Feb 2026 – now</span>
+      <div class="item"><span class="title">Software Engineer, Capital One</span></div>
+      <span class="when">Summer 2025</span>
+      <div class="item"><span class="title">Software Engineer Intern, SeatGeek</span></div>
+      <span class="when">Fall 2024</span>
+      <div class="item"><span class="title">Software Engineer Intern, NVIDIA</span></div>
+      <span class="when">Summer 2024</span>
+      <div class="item"><span class="title">Software Engineer Intern, Capital One</span></div>
+      <span class="when">Summer 2023</span>
+      <div class="item"><span class="title">Software Engineer Intern, Yahoo</span></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Projects</h2>
+    <ul class="list">
+      <li class="item">
+        <span class="title">Cryptolets</span>
+        <span class="meta">NSF CIRC GRAND program building open-source infrastructure for cryptographic computing: a hardware library of kernels and accelerators, chiplet interfaces, verification tooling, and community education through tutorials and workshops.</span>
+        <span class="actions">
+          <a href="https://cryptolets.org">site</a>
+          <a href="https://github.com/cryptolets">code</a>
+        </span>
+      </li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Education</h2>
+    <div class="exp">
+      <span class="when">2026</span>
+      <div class="item">
+        <span class="title">M.S. Computer Engineering, New York University</span>
+      </div>
+      <span class="when">2023</span>
+      <div class="item">
+        <span class="title">B.S. Computer Science, City College of New York</span>
+      </div>
+    </div>
+  </section>
+
+  <footer>Last updated September 2026</footer>
+</main>
+</body>
+</html>
